@@ -45,7 +45,7 @@ export default async function Home() {
           نقدم خدمات طبية استثنائية في مجالات متعددة للعناية بصحة وجمال أسنانكم
           مع 9 سنوات من الخبرة، 50+ طبيب متخصص، وأحدث التقنيات
         </p>
-        {/* <div className="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 flex flex-wrap justify-center items-center">
           {addresses.map((address, index) => (
             <AddressCard
               key={index}
@@ -53,7 +53,7 @@ export default async function Home() {
               phone={address.phone}
             />
           ))}
-        </div> */}
+        </div>
       </header>
       <main className="mx-auto mt-10 w-[600px] max-w-[90vw]">
         <PaymentForm />
@@ -192,17 +192,17 @@ function PaymentForm() {
 
 function AddressCard({ address, phone }: { address: string; phone: string }) {
   return (
-    <div className="flex flex-col items-start justify-between rounded-md p-6 text-start text-sm text-gray-500 shadow-sm">
-      <div className="flex items-center">
+    <div dir="rtl" className="flex flex-col items-start justify-between rounded-md p-6 text-start text-sm text-gray-500 shadow-sm w-[300px] max-w-[90%]">
+      <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank" className="flex items-center mb-2">
         <MapPin className="me-2" size={20} />
-        <span dir="rtl" className="text-center">
+        <span>
           {address}
         </span>
-      </div>
-      <div className="flex items-center">
+      </a>
+      <a href={`tel:${phone}`} className="flex items-center" target="_blank">
         <Phone className="me-2" size={20} />
         <span>{phone}</span>
-      </div>
+      </a>
     </div>
   );
 }
